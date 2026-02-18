@@ -1,0 +1,14 @@
+---
+interface Props {
+  copyrightName: string;
+}
+
+const { copyrightName } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-foreground text-primary-foreground/60 py-6">
+  <div class="container mx-auto px-4 text-center text-xs">
+    © {year} {copyrightName}. Kõik õigused kaitstud.
+  </div>
+</footer>

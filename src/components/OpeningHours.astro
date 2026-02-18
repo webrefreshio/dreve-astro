@@ -1,0 +1,53 @@
+---
+interface ScheduleEntry {
+  day: string;
+  time: string;
+}
+
+interface Props {
+  sectionTitle: string;
+  schedule: ScheduleEntry[];
+  phone: string;
+  mobile: string;
+  mapEmbedUrl: string;
+  mapTitle: string;
+}
+
+const { sectionTitle, schedule, phone, mobile, mapEmbedUrl, mapTitle } = Astro.props;
+---
+
+<div class="max-w-3xl mx-auto mb-12">
+  <h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-6 text-center">
+    {sectionTitle}
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+    <div class="glass-card rounded-xl p-6">
+      {schedule.map((h) => (
+        <div class="flex items-center gap-4 py-2 border-b border-border/50 last:border-b-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span class="font-medium text-foreground w-8">{h.day}</span>
+          <span class="text-muted-foreground">{h.time}</span>
+        </div>
+      ))}
+      <p class="mt-4 text-sm text-muted-foreground text-center">
+        Eelregistreerida: <span class="font-medium text-foreground">{phone}</span> · mob.{" "}
+        <span class="font-medium text-foreground">{mobile}</span>
+      </p>
+    </div>
+    <div class="glass-card rounded-xl overflow-hidden min-h-[250px]">
+      <iframe
+        src={mapEmbedUrl}
+        width="100%"
+        height="100%"
+        style="border: 0; min-height: 250px;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title={mapTitle}
+      />
+    </div>
+  </div>
+</div>

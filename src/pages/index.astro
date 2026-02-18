@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Banner from '../components/Banner.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Notices from '../components/Notices.astro';
+import OpeningHours from '../components/OpeningHours.astro';
+import StaffCards from '../components/StaffCards.astro';
+import PatientInfoSection from '../components/PatientInfoSection';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+import { marked } from 'marked';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import yaml from 'js-yaml';
+
+// Load site content from YAML
+const yamlPath = join(process.cwd(), 'src/content/site.yaml');
+const rawYaml = readFileSync(yamlPath, 'utf-8');
+const site = yaml.load(rawYaml) as Record<string, any>;
+
+// Pre-render accordion markdown content to HTML
+const accordionItems = await Promise.all(
+  site.accordion_items.items.map(async (item: any) => ({
+    id: item.id,
+    icon: item.icon,
+    title: item.title,
+    contentHtml: await marked(item.content || ''),
+  }))
+);
+---
+
+<BaseLayout>
+  <div class="min-h-screen bg-background">
+    <Banner
+      enabled={site.banner.enabled}
+      text={site.banner.text}
+      type={site.banner.type}
+    />
+
+    <Header
+      logoTitle={site.header.logo_title}
+      logoSubtitle={site.header.logo_subtitle}
+      navLinks={site.header.nav_links}
+      phone={site.header.phone}
+      phoneDisplay={site.header.phone_display}
+      externalLink={site.header.external_link}
+    />
+
+    <Hero
+      title={site.hero.title}
+      subtitle={site.hero.subtitle}
+      backgroundImage={site.hero.background_image}
+      ctaText={site.hero.cta_text}
+      ctaUrl={site.hero.cta_url}
+    />
+
+    <Notices notices={site.notices} />
+
+    <section id="vastuvotud" class="container mx-auto px-4 py-16 scroll-mt-20">
+      <OpeningHours
+        sectionTitle={site.opening_hours.section_title}
+        schedule={site.opening_hours.schedule}
+        phone={site.opening_hours.phone}
+        mobile={site.opening_hours.mobile}
+        mapEmbedUrl={site.opening_hours.map_embed_url}
+        mapTitle={site.opening_hours.map_title}
+      />
+
+      <StaffCards
+        sectionTitle={site.staff.section_title}
+        note={site.staff.note}
+        members={site.staff.members}
+      />
+    </section>
+
+    <PatientInfoSection
+      client:visible
+      sectionTitle={site.accordion_items.section_title}
+      sectionSubtitle={site.accordion_items.section_subtitle}
+      items={accordionItems}
+    />
+
+    <ContactSection
+      sectionTitle={site.contact.section_title}
+      address={site.contact.address}
+      cabinet={site.contact.cabinet}
+      phone={site.contact.phone}
+      mobile={site.contact.mobile}
+      email={site.contact.email}
+      externalLinks={site.contact.external_links}
+      insuranceNote={site.contact.insurance_note}
+    />
+
+    <Footer copyrightName={site.footer.copyright_name} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  enabled: boolean;
+  text: string;
+  type?: string;
+}
+
+const { enabled, text, type } = Astro.props;
+---
+
+{enabled && (
+  <div class="bg-primary text-primary-foreground text-center text-sm py-2 px-4 font-medium">
+    {text}
+  </div>
+)}

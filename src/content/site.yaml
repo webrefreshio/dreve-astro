@@ -1,0 +1,218 @@
+banner:
+  enabled: true
+  text: "🎄 Jõulupühade ajal 23.–26. detsember on kabinet suletud. Häid pühi!"
+  type: "warning"
+
+header:
+  logo_title: "Perearst Eve Mõistus"
+  logo_subtitle: "Maarjamõisa Polikliinik"
+  nav_links:
+    - label: "Vastuvõtuajad"
+      href: "#vastuvotud"
+    - label: "Patsiendile"
+      href: "#patsiendile"
+    - label: "Kontakt"
+      href: "#kontakt"
+  phone: "+3727319241"
+  phone_display: "731 9241"
+  external_link:
+    url: "https://www.perearst24.ee"
+    label: "perearst24.ee"
+
+hero:
+  title: "Teie tervis on meie prioriteet"
+  subtitle: "Maarjamõisa Polikliinik · Puusepa 1a, Tartu"
+  background_image: "/hero-medical.jpg"
+  cta_text: "Registreeri vastuvõtule"
+  cta_url: "tel:+3727319241"
+
+notices:
+  - enabled: true
+    text: "Patsientidel palume pöörduda oma muredega (probleemid, haiguslehed, retseptid jne) telefoni ja meilisuhtluse asemel Certificu platvormi kasutama"
+    link:
+      url: "https://www.perearst24.ee"
+      label: "www.perearst24.ee"
+  - enabled: true
+    text: "Võtame vastu vaid telefoni teel etteregistreeritud patsiente! Väljaspool keskuse tööaega pöörduda 1220 perearsti nõuandeliinile või EMOsse."
+
+opening_hours:
+  section_title: "Perearstikabinet avatud tööpäevadel"
+  schedule:
+    - day: "E"
+      time: "8:00–16:00"
+    - day: "T"
+      time: "8:00–16:00"
+    - day: "K"
+      time: "10:00–18:00"
+    - day: "N"
+      time: "8:00–16:00"
+    - day: "R"
+      time: "8:00–16:00"
+  phone: "(+372) 731 9241"
+  mobile: "5080862"
+  map_embed_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2092.530987500595!2d26.701621777773948!3d58.367581487628826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eb3719bf8df2dd%3A0x96a7cf099ec09a57!2sPuusepa%20tn%201a%2C%2050406%20Tartu!5e0!3m2!1sen!2see!4v1771337018544!5m2!1sen!2see"
+  map_title: "Maarjamõisa Polikliinik asukoht"
+
+staff:
+  section_title: "Vastuvõtuajad"
+  note: "Telefonikonsultatsioonid ja nõustamine pereõe poolt igal tööpäeval keskuse lahtiolekuaegadel."
+  members:
+    - name: "Eve Mõistus"
+      role: "Perearst"
+      cabinet: "3041"
+      schedule:
+        - day: "E"
+          time: "9:00–14:00"
+        - day: "T"
+          time: "9:00–13:00"
+        - day: "N"
+          time: "9:00–13:00"
+        - day: "R"
+          time: "8:00–13:00"
+    - name: "Anu Valkna"
+      role: "Perearst"
+      cabinet: "3041"
+      schedule:
+        - day: "K"
+          time: "13:00–18:00"
+    - name: "Katrin Randviir"
+      role: "Pereõde"
+      cabinet: "3040"
+      schedule:
+        - day: "E"
+          time: "13:00–16:00"
+        - day: "T"
+          time: "8:00–13:00"
+        - day: "K"
+          time: "14:00–18:00"
+        - day: "N"
+          time: "8:00–12:00"
+        - day: "R"
+          time: "12:00–16:00"
+    - name: "Aleksandra Krotenko"
+      role: "Pereõde"
+      cabinet: "3039"
+      schedule:
+        - day: "E"
+          time: "8:00–13:00"
+        - day: "T"
+          time: "13:00–16:00"
+        - day: "K"
+          time: "10:00–14:00"
+        - day: "N"
+          time: "12:00–16:00"
+        - day: "R"
+          time: "8:00–12:00"
+
+accordion_items:
+  section_title: "Patsiendile"
+  section_subtitle: "Oluline informatsioon meie patsientidele"
+  items:
+    - id: "vastuvott"
+      icon: "Stethoscope"
+      title: "Vastuvõtule pöördumine"
+      content: |
+        Vastuvõtule pääsemiseks on vajalik eelregistreerimine. Registreerida saab järgmistel viisidel:
+
+        **Telefoni teel**
+
+        Helistage registratuurinumbril **(+372) 731 9241** või **mob. 5080862** tööpäevadel kabineti lahtiolekuaegadel.
+
+        **Digiregistratuur (PADI)**
+
+        Kasutage digiplatvormi [perearst24.ee](https://www.perearst24.ee) — saate esitada oma probleemi, küsida haiguslehte, retsepti pikendust ja muud.
+
+        **NB!** Võtame vastu vaid eelregistreeritud patsiente. Väljaspool tööaega helistage perearsti nõuandeliinile **1220** või pöörduge EMO-sse.
+    - id: "hinnakiri"
+      icon: "CreditCard"
+      title: "Tasuliste teenuste hinnakiri"
+      content: |
+        **Tervisetõendid**
+
+        | Teenus | Hind |
+        |--------|------|
+        | Mootorsõiduki juhiloa taotlemine AB | 40 € |
+        | Mootorsõiduki juhiloa taotlemine CDE | 50 € |
+        | Tööle, praktikale (sisaldab kopsu röntgenit) | 50 € |
+        | Tööle, praktikale (sisaldab kopsu röntgenit ja rooja bakterioloogilisi analüüse) | 100 € |
+        | Tööle, praktikale (ei sisalda uuringuid) | 30 € |
+        | Relvaloa või abipolitseiniku tõendi taotlus | 80 € |
+        | Välisriiki õppima või tööle asumine (ei sisalda uuringuid) | 50 € |
+        | Pangalaenude, kindlustuse taotlemine (ei sisalda uuringuid) | 100 € |
+        | Muu tõend (akadeemiline õppepuhkus, turismifirmad jne) | 30 € |
+        | Duplikaatide väljastamine | 10 € |
+        | Mujal tehtud analüüside/uuringute kommenteerimine arsti poolt | 30 € |
+        | Koduvisiit | 5 € |
+
+        **Tasulised teenused kindlustamata isikule**
+
+        | Teenus | Hind |
+        |--------|------|
+        | Arsti esmane vastuvõtt (ei sisalda uuringuid) | 50 € |
+        | Arsti korduv vastuvõtt | 30 € |
+        | Pereõe vastuvõtt | 25 € |
+        | Pereõe koduvisiit | 50 € |
+        | Ravimiretsepti pikendamine | 20 € |
+        | Arsti koduvisiit (ei sisalda uuringuid) | 100 € |
+
+        Ravikindlustusega patsientidele on perearsti ja pereõe vastuvõtt tasuta. Täpsemat infot küsige registratuurist.
+    - id: "tagasiside"
+      icon: "MessageSquare"
+      title: "Tagasiside ja kaebused"
+      content: |
+        Väärtustame teie tagasisidet, et parandada meie teenuse kvaliteeti. Tagasiside ja kaebuste esitamiseks on järgmised võimalused:
+
+        - Saatke e-kiri aadressile [pereode.moistus@gmail.com](mailto:pereode.moistus@gmail.com)
+        - Helistage telefonil **(+372) 731 9241**
+        - Esitage tagasiside digiplatvormil [perearst24.ee](https://www.perearst24.ee)
+
+        Kaebuste korral vastame hiljemalt 30 päeva jooksul. Kaebusi saab esitada ka [Terviseametile](https://www.terviseamet.ee) või [Tervisekassale](https://www.tervisekassa.ee).
+    - id: "nimistu"
+      icon: "UserPlus"
+      title: "Nimistusse registreerimine"
+      content: |
+        Perearsti nimistusse registreerimiseks esitage avaldus Tervisekassa kaudu.
+
+        - Kontrollige nimistute vabade kohtade seisu [Tervisekassa kodulehelt](https://www.tervisekassa.ee/perearsti-nimistu)
+        - Avaldust saab esitada riigiportaali [eesti.ee](https://www.eesti.ee) kaudu
+        - Avalduse saab esitada ka paberkandjal otse meie praksisesse
+
+        Lisainfot nimistusse registreerimise kohta leiate [Tervisekassa veebilehelt](https://www.tervisekassa.ee/inimesele/arsti-ja-oendusabi/perearst).
+    - id: "privaatsus"
+      icon: "FileText"
+      title: "Privaatsustingimused"
+      content: |
+        Perearst Eve Mõistus praxis töötleb isikuandmeid vastavalt Euroopa Liidu isikuandmete kaitse üldmäärusele (GDPR).
+
+        **Andmete töötlemise eesmärgid:**
+
+        - Tervishoiuteenuste osutamine ja patsiendi ravimine
+        - Tervise infosüsteemis (e-tervis) andmete edastamine vastavalt seadusele
+        - Tervisekassale arvete esitamine
+        - Patsiendiga suhtlemine (visiidimeeldetuletused, analüüside vastused)
+
+        **Teie õigused:**
+
+        - Õigus tutvuda oma isikuandmetega
+        - Õigus nõuda andmete parandamist
+        - Õigus esitada vastuväiteid andmete töötlemise suhtes
+        - Õigus pöörduda Andmekaitse Inspektsiooni poole
+
+        Tervishoiuandmeid säilitatakse vastavalt tervishoiuteenuste korraldamise seaduses sätestatud tähtaegadele. Küsimuste korral võtke ühendust: [pereode.moistus@gmail.com](mailto:pereode.moistus@gmail.com)
+
+contact:
+  section_title: "Kontaktinfo"
+  address: "Puusepa 1a, Tartu"
+  cabinet: "3041"
+  phone: "(+372) 731 9241"
+  mobile: "5080862"
+  email: "pereode.moistus@gmail.com"
+  external_links:
+    - url: "https://tervisekassa.ee/"
+      label: "tervisekassa.ee"
+    - url: "https://terviseamet.ee/"
+      label: "terviseamet.ee"
+  insurance_note: "Vastutuskindlustus PZU ettevõtelt"
+
+footer:
+  copyright_name: "Perearst Eve Mõistus"

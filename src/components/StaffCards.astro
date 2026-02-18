@@ -1,0 +1,61 @@
+---
+interface ScheduleEntry {
+  day: string;
+  time: string;
+}
+
+interface StaffMember {
+  name: string;
+  role: string;
+  cabinet: string;
+  schedule: ScheduleEntry[];
+}
+
+interface Props {
+  sectionTitle: string;
+  note: string;
+  members: StaffMember[];
+}
+
+const { sectionTitle, note, members } = Astro.props;
+---
+
+<>
+  <h2 class="text-2xl md:text-3xl font-serif font-bold text-foreground mb-8 text-center">
+    {sectionTitle}
+  </h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+    {members.map((member) => (
+      <div class="glass-card rounded-xl p-6 hover:shadow-xl transition-shadow duration-300 animate-fade-in">
+        <div class="mb-4">
+          <h3 class="text-xl font-semibold text-foreground">{member.name}</h3>
+          <p class="text-sm text-primary font-medium">{member.role}</p>
+        </div>
+        <div class="space-y-2 mb-4">
+          {member.schedule.map((entry) => (
+            <div class="flex items-center gap-3 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-muted-foreground shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span class="font-medium text-foreground w-8">{entry.day}</span>
+              <span class="text-muted-foreground">{entry.time}</span>
+            </div>
+          ))}
+        </div>
+        {member.cabinet && (
+          <div class="flex items-center gap-2 text-sm text-muted-foreground pt-3 border-t border-border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Kab. {member.cabinet}</span>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+  <p class="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
+    {note}
+  </p>
+</>

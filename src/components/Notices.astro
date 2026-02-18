@@ -1,0 +1,45 @@
+---
+interface Notice {
+  enabled: boolean;
+  text: string;
+  link?: { url: string; label: string };
+}
+
+interface Props {
+  notices: Notice[];
+}
+
+const { notices } = Astro.props;
+const activeNotices = notices.filter((n) => n.enabled);
+---
+
+{activeNotices.length > 0 && (
+  <section class="container mx-auto px-4 -mt-6 relative z-10">
+    <div class="space-y-3 max-w-3xl mx-auto">
+      {activeNotices.map((notice) => (
+        <div class="rounded-lg bg-notice-bg border border-notice/30 p-4 flex items-start gap-3">
+          <span class="text-notice mt-0.5 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+              <path d="M12 9v4"/>
+              <path d="M12 17h.01"/>
+            </svg>
+          </span>
+          <p class="text-sm text-notice-foreground font-medium leading-relaxed">
+            {notice.text}
+            {notice.link && (
+              <> — <a
+                href={notice.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline font-bold"
+              >
+                {notice.link.label}
+              </a></>
+            )}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}

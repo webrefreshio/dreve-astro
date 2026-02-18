@@ -1,0 +1,64 @@
+---
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  logoTitle: string;
+  logoSubtitle: string;
+  navLinks: NavLink[];
+  phone: string;
+  phoneDisplay: string;
+  externalLink: { url: string; label: string };
+}
+
+const { logoTitle, logoSubtitle, navLinks, phone, phoneDisplay, externalLink } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 bg-card/90 backdrop-blur-lg border-b border-border/50">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div>
+      <a href="#" class="block">
+        <h1 class="text-xl md:text-2xl font-serif font-bold text-foreground">
+          {logoTitle}
+        </h1>
+        <p class="text-xs text-muted-foreground hidden sm:block">{logoSubtitle}</p>
+      </a>
+    </div>
+    <nav class="hidden md:flex items-center gap-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-3">
+      <a
+        href={`tel:${phone}`}
+        class="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span class="hidden md:inline">{phoneDisplay}</span>
+      </a>
+      <a
+        href={externalLink.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        <span class="hidden sm:inline">{externalLink.label}</span>
+      </a>
+    </div>
+  </div>
+</header>

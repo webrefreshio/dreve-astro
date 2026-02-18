@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Perearst Eve Mõistus | Maarjamõisa Polikliinik, Tartu',
+  description = 'Perearst Eve Mõistus perearstikeskus Tartus. Vastuvõtuajad, kontaktinfo ja registreerimine.',
+  canonicalUrl = 'https://dreve.webrefresh.io/',
+  ogImage = 'https://dreve.webrefresh.io/hero-medical.jpg',
+} = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "Perearst Eve Mõistus",
+  "description": "Perearstikeskus Tartus – vastuvõtuajad ja registreerimine.",
+  "url": "https://dreve.webrefresh.io/",
+  "telephone": "+3727319241",
+  "email": "pereode.moistus@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Puusepa 1a",
+    "addressLocality": "Tartu",
+    "addressCountry": "EE",
+    "postalCode": "50406"
+  },
+  "medicalSpecialty": "General Practice",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "08:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "08:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "08:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "16:00" }
+  ],
+  "parentOrganization": {
+    "@type": "MedicalClinic",
+    "name": "Maarjamõisa Polikliinik"
+  }
+};
+---
+
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="et_EE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
