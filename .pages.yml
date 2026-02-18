@@ -27,10 +27,11 @@ content:
             type: select
             default: warning
             options:
-              - label: Hoiatus
-                value: warning
-              - label: Info
-                value: info
+              values:
+                - value: warning
+                  label: Hoiatus
+                - value: info
+                  label: Info
 
       # ── PÄIS ──
       - name: header
@@ -207,16 +208,17 @@ content:
                 label: Ikoon
                 type: select
                 options:
-                  - label: Stetoskoop
-                    value: Stethoscope
-                  - label: Krediitkaart
-                    value: CreditCard
-                  - label: Sõnumid
-                    value: MessageSquare
-                  - label: Lisa kasutaja
-                    value: UserPlus
-                  - label: Dokument
-                    value: FileText
+                  values:
+                    - value: Stethoscope
+                      label: Stetoskoop
+                    - value: CreditCard
+                      label: Krediitkaart
+                    - value: MessageSquare
+                      label: Sõnumid
+                    - value: UserPlus
+                      label: Lisa kasutaja
+                    - value: FileText
+                      label: Dokument
               - name: title
                 label: Pealkiri
                 type: string
