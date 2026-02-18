@@ -1,7 +1,7 @@
 banner:
-  enabled: false
+  enabled: true
   text: 🎄 Jõulupühade ajal 23.–26. detsember on kabinet suletud. Häid pühi!
-  type: warning
+  type: info
 header:
   logo_title: Perearst Eve Mõistus
   logo_subtitle: Maarjamõisa Polikliinik
