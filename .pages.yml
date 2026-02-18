@@ -1,296 +1,273 @@
-backend:
-  name: github
-  repo: webrefreshio/dreve-astro
-  site_url: https://dreveastro.webrefresh.io
-  branch: main
+media:
+  input: public
+  output: /
 
-media_folder: public
-public_folder: /
-
-collections:
+content:
   - name: site
     label: Saidi sisu
-    files:
-      - name: site
-        label: Kõik sisu
-        file: src/content/site.yaml
+    path: src/content/site.yaml
+    type: file
+    fields:
+
+      # ── BÄNNER ──
+      - name: banner
+        label: Teadaanne
+        type: object
         fields:
+          - name: enabled
+            label: Teadaanne aktiivne
+            type: boolean
+            description: "Lülita sisse, et kuvada kollane teadaanderiba lehe ülaosas."
+          - name: text
+            label: Teadaande tekst
+            type: string
+            description: "Tekst, mis kuvatakse teadaandes (emojid on lubatud)."
+          - name: type
+            label: Teadaande tüüp
+            type: select
+            default: warning
+            options:
+              - label: Hoiatus
+                value: warning
+              - label: Info
+                value: info
 
-          # ────────────────────────────────────────
-          # BÄNNER
-          # ────────────────────────────────────────
-          - label: Teadaanne
-            name: banner
-            widget: object
+      # ── PÄIS ──
+      - name: header
+        label: Päis
+        type: object
+        fields:
+          - name: logo_title
+            label: Logo pealkiri
+            type: string
+          - name: logo_subtitle
+            label: Logo alapealkiri
+            type: string
+          - name: nav_links
+            label: Navigatsiooni lingid
+            type: object
+            list: true
             fields:
-              - label: Teadaanne aktiivne
-                name: enabled
-                widget: boolean
-                default: false
-                hint: "Lülita sisse, et kuvada kollane teadaanderiba lehe ülaosas."
-              - label: Teadaande tekst
-                name: text
-                widget: string
-                hint: "Tekst, mis kuvatakse teadaandes (emojid on lubatud)."
-              - label: Teadaande tüüp
-                name: type
-                widget: select
+              - name: label
+                label: Tekst
+                type: string
+              - name: href
+                label: "Ankur (#id)"
+                type: string
+          - name: phone
+            label: "Telefon (tehniline, nt +3727319241)"
+            type: string
+          - name: phone_display
+            label: "Telefon (kuvatav, nt 731 9241)"
+            type: string
+          - name: external_link
+            label: Väline link
+            type: object
+            fields:
+              - name: url
+                label: URL
+                type: string
+              - name: label
+                label: Tekst
+                type: string
+
+      # ── HERO SEKTSIOON ──
+      - name: hero
+        label: Hero sektsioon
+        type: object
+        fields:
+          - name: title
+            label: Pealkiri
+            type: string
+          - name: subtitle
+            label: Alapealkiri
+            type: string
+          - name: background_image
+            label: Taustapilt
+            type: image
+          - name: cta_text
+            label: Nupu tekst
+            type: string
+          - name: cta_url
+            label: Nupu link
+            type: string
+
+      # ── TEATISED ──
+      - name: notices
+        label: Teatised
+        type: object
+        list: true
+        fields:
+          - name: enabled
+            label: Teatis aktiivne
+            type: boolean
+          - name: text
+            label: Teatise tekst
+            type: text
+          - name: link
+            label: "Link (valikuline)"
+            type: object
+            fields:
+              - name: url
+                label: URL
+                type: string
+              - name: label
+                label: Lingi tekst
+                type: string
+
+      # ── LAHTIOLEKUAJAD ──
+      - name: opening_hours
+        label: Lahtiolekuajad
+        type: object
+        fields:
+          - name: section_title
+            label: Sektsiooni pealkiri
+            type: string
+          - name: schedule
+            label: Graafik
+            type: object
+            list: true
+            fields:
+              - name: day
+                label: "Päev (nt E, T, K)"
+                type: string
+              - name: time
+                label: "Aeg (nt 8:00–16:00)"
+                type: string
+          - name: phone
+            label: Lauatelefon
+            type: string
+          - name: mobile
+            label: Mobiil
+            type: string
+          - name: map_embed_url
+            label: Google Maps manustamise URL
+            type: string
+          - name: map_title
+            label: Kaardi pealkiri (ekraanilugejatele)
+            type: string
+
+      # ── TÖÖTAJAD ──
+      - name: staff
+        label: Töötajad
+        type: object
+        fields:
+          - name: section_title
+            label: Sektsiooni pealkiri
+            type: string
+          - name: note
+            label: Allmärkus
+            type: text
+          - name: members
+            label: Töötajad
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: Nimi
+                type: string
+              - name: role
+                label: Ametinimetus
+                type: string
+              - name: cabinet
+                label: Kabineti number
+                type: string
+              - name: schedule
+                label: Vastuvõtugraafik
+                type: object
+                list: true
+                fields:
+                  - name: day
+                    label: Päev
+                    type: string
+                  - name: time
+                    label: Kellaaeg
+                    type: string
+
+      # ── PATSIENDILE (AKORDION) ──
+      - name: accordion_items
+        label: Patsiendile sektsioon
+        type: object
+        fields:
+          - name: section_title
+            label: Sektsiooni pealkiri
+            type: string
+          - name: section_subtitle
+            label: Sektsiooni alapealkiri
+            type: string
+          - name: items
+            label: Patsiendile sektsioonid
+            type: object
+            list: true
+            fields:
+              - name: id
+                label: "ID (unikaalne, nt vastuvott)"
+                type: string
+              - name: icon
+                label: Ikoon
+                type: select
                 options:
-                  - { label: Hoiatus, value: warning }
-                  - { label: Info, value: info }
-                default: warning
+                  - label: Stetoskoop
+                    value: Stethoscope
+                  - label: Krediitkaart
+                    value: CreditCard
+                  - label: Sõnumid
+                    value: MessageSquare
+                  - label: Lisa kasutaja
+                    value: UserPlus
+                  - label: Dokument
+                    value: FileText
+              - name: title
+                label: Pealkiri
+                type: string
+              - name: content
+                label: Sisu
+                type: rich-text
+                description: "Saab kasutada pakskirja (**tekst**), linke ([tekst](url)), loendeid ja tabeleid."
 
-          # ────────────────────────────────────────
-          # PÄIS
-          # ────────────────────────────────────────
-          - label: Päis
-            name: header
-            widget: object
+      # ── KONTAKT ──
+      - name: contact
+        label: Kontaktinfo
+        type: object
+        fields:
+          - name: section_title
+            label: Sektsiooni pealkiri
+            type: string
+          - name: address
+            label: Aadress
+            type: string
+          - name: cabinet
+            label: Kabineti number
+            type: string
+          - name: phone
+            label: Telefon
+            type: string
+          - name: mobile
+            label: Mobiiltelefon
+            type: string
+          - name: email
+            label: E-posti aadress
+            type: string
+          - name: external_links
+            label: Välised lingid
+            type: object
+            list: true
             fields:
-              - label: Logo pealkiri
-                name: logo_title
-                widget: string
-              - label: Logo alapealkiri
-                name: logo_subtitle
-                widget: string
-              - label: Navigatsiooni lingid
-                name: nav_links
-                widget: list
-                label_singular: Link
-                fields:
-                  - label: Tekst
-                    name: label
-                    widget: string
-                  - label: Ankur (#id)
-                    name: href
-                    widget: string
-              - label: Telefon (tehniline, nt +3727319241)
-                name: phone
-                widget: string
-              - label: Telefon (kuvatav, nt 731 9241)
-                name: phone_display
-                widget: string
-              - label: Väline link
-                name: external_link
-                widget: object
-                fields:
-                  - label: URL
-                    name: url
-                    widget: string
-                  - label: Tekst
-                    name: label
-                    widget: string
+              - name: url
+                label: URL
+                type: string
+              - name: label
+                label: Lingi tekst
+                type: string
+          - name: insurance_note
+            label: Kindlustusmärkus
+            type: string
 
-          # ────────────────────────────────────────
-          # HERO SEKTSIOON
-          # ────────────────────────────────────────
-          - label: Hero sektsioon
-            name: hero
-            widget: object
-            fields:
-              - label: Pealkiri
-                name: title
-                widget: string
-              - label: Alapealkiri
-                name: subtitle
-                widget: string
-              - label: Taustatpilt
-                name: background_image
-                widget: image
-              - label: Nupu tekst
-                name: cta_text
-                widget: string
-              - label: Nupu link
-                name: cta_url
-                widget: string
-
-          # ────────────────────────────────────────
-          # TEATISED
-          # ────────────────────────────────────────
-          - label: Teatised
-            name: notices
-            widget: list
-            label_singular: Teatis
-            fields:
-              - label: Teatis aktiivne
-                name: enabled
-                widget: boolean
-                default: true
-              - label: Teatise tekst
-                name: text
-                widget: text
-              - label: Link (valikuline)
-                name: link
-                widget: object
-                required: false
-                fields:
-                  - label: URL
-                    name: url
-                    widget: string
-                    required: false
-                  - label: Lingi tekst
-                    name: label
-                    widget: string
-                    required: false
-
-          # ────────────────────────────────────────
-          # LAHTIOLEKUAJAD
-          # ────────────────────────────────────────
-          - label: Lahtiolekuajad
-            name: opening_hours
-            widget: object
-            fields:
-              - label: Sektsiooni pealkiri
-                name: section_title
-                widget: string
-              - label: Graafik
-                name: schedule
-                widget: list
-                label_singular: Päev
-                fields:
-                  - label: Päev (nt E, T, K)
-                    name: day
-                    widget: string
-                  - label: Aeg (nt 8:00–16:00)
-                    name: time
-                    widget: string
-              - label: Lauatelefon
-                name: phone
-                widget: string
-              - label: Mobiil
-                name: mobile
-                widget: string
-              - label: Google Maps manustamise URL
-                name: map_embed_url
-                widget: string
-              - label: Kaardi pealkiri (ekraanilugejatele)
-                name: map_title
-                widget: string
-
-          # ────────────────────────────────────────
-          # TÖÖTAJAD
-          # ────────────────────────────────────────
-          - label: Töötajad
-            name: staff
-            widget: object
-            fields:
-              - label: Sektsiooni pealkiri
-                name: section_title
-                widget: string
-              - label: Allmärkus
-                name: note
-                widget: text
-              - label: Töötajad
-                name: members
-                widget: list
-                label_singular: Töötaja
-                fields:
-                  - label: Nimi
-                    name: name
-                    widget: string
-                  - label: Ametinimetus
-                    name: role
-                    widget: string
-                  - label: Kabineti number
-                    name: cabinet
-                    widget: string
-                  - label: Vastuvõtugraafik
-                    name: schedule
-                    widget: list
-                    label_singular: Aeg
-                    fields:
-                      - label: Päev
-                        name: day
-                        widget: string
-                      - label: Kellaaeg
-                        name: time
-                        widget: string
-
-          # ────────────────────────────────────────
-          # PATSIENDILE (AKORDION)
-          # ────────────────────────────────────────
-          - label: Patsiendile sektsioon
-            name: accordion_items
-            widget: object
-            fields:
-              - label: Sektsiooni pealkiri
-                name: section_title
-                widget: string
-              - label: Sektsiooni alapealkiri
-                name: section_subtitle
-                widget: string
-              - label: Patsiendile sektsioonid
-                name: items
-                widget: list
-                label_singular: Sektsioon
-                fields:
-                  - label: ID (unikaalne, nt vastuvott)
-                    name: id
-                    widget: string
-                  - label: Ikoon
-                    name: icon
-                    widget: select
-                    options:
-                      - { label: Stetoskoop, value: Stethoscope }
-                      - { label: Krediitkaart, value: CreditCard }
-                      - { label: Sõnumid, value: MessageSquare }
-                      - { label: Lisa kasutaja, value: UserPlus }
-                      - { label: Dokument, value: FileText }
-                  - label: Pealkiri
-                    name: title
-                    widget: string
-                  - label: Sisu (Markdown)
-                    name: content
-                    widget: markdown
-                    hint: "Saab kasutada pakskirja (**tekst**), linke ([tekst](url)), loendeid ja tabeleid."
-
-          # ────────────────────────────────────────
-          # KONTAKT
-          # ────────────────────────────────────────
-          - label: Kontaktinfo
-            name: contact
-            widget: object
-            fields:
-              - label: Sektsiooni pealkiri
-                name: section_title
-                widget: string
-              - label: Aadress
-                name: address
-                widget: string
-              - label: Kabineti number
-                name: cabinet
-                widget: string
-              - label: Telefon
-                name: phone
-                widget: string
-              - label: Mobiiltelefon
-                name: mobile
-                widget: string
-              - label: E-posti aadress
-                name: email
-                widget: string
-              - label: Välised lingid
-                name: external_links
-                widget: list
-                label_singular: Link
-                fields:
-                  - label: URL
-                    name: url
-                    widget: string
-                  - label: Lingi tekst
-                    name: label
-                    widget: string
-              - label: Kindlustusmärkus
-                name: insurance_note
-                widget: string
-
-          # ────────────────────────────────────────
-          # JALUS
-          # ────────────────────────────────────────
-          - label: Jalus
-            name: footer
-            widget: object
-            fields:
-              - label: Autoriõiguse omaniku nimi
-                name: copyright_name
-                widget: string
+      # ── JALUS ──
+      - name: footer
+        label: Jalus
+        type: object
+        fields:
+          - name: copyright_name
+            label: Autoriõiguse omaniku nimi
+            type: string
