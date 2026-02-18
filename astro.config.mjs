@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://dreve.webrefresh.io',
+  site: 'https://dreveastro.webrefresh.io',
   output: 'static',
   integrations: [
     react(),

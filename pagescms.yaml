@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: webrefreshio/dreve-astro
+  site_url: https://dreveastro.webrefresh.io
   branch: main
 
 media_folder: public
